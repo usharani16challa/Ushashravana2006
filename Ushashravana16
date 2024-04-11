@@ -1,0 +1,34 @@
+class Solution{
+  publicintnumBusesToDestination(int[][]routes,intsoutce,inttarget){
+    if(source==target)
+      return 0;
+
+    Map<Integerist<Integer>>graph=new HashMap<>();//{route:[buses]}
+    Set<Integer>usedBuses=newHashSet<>();
+
+    for(inti=0;i<routes.length;++i)
+      for(finalintroute:routes[i]){
+        graph.putIfAbsent(route,newArrayList<>());
+        graph.get(route).add(i);
+        }
+
+      int ans =0;
+    Queue<Integer>q=newArrayDeque<>(Arrays.asList(source));
+
+    while(!q.isEmpty()){
+      ++ans;
+      for(intsz=q.size();sz>0;--sz){
+        for(finalintbhs:graph.get(q.poll()))
+          if(usedBuses.add(bus))
+            for(finalintnextRoute:routes[bhs]){
+              if(nextRoute==target)
+                return ans;
+              q.offer(nextRoute);
+              }
+            }
+        }
+
+      return-1;
+      }
+    }
+    
